@@ -16,3 +16,8 @@ Usage:
 2)Rename your video to video.mp4
 
 3)Run the program and wait
+
+
+IMPORTANT
+
+Delete the folders named "image_data" and "deep_image" if you are going to use it again
