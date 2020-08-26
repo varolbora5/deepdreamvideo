@@ -1,6 +1,8 @@
 import cv2
 import os
 import requests
+from PIL import Image
+from moviepy.video.io.ImageSequenceClip import ImageSequenceClip
 cam = cv2.VideoCapture('./video.mp4')
 try:
     if not os.path.exists('image_data'):
@@ -33,7 +35,7 @@ cv2.destroyAllWindows()
 
 currentframe = 0
 while True:
-    if currentframe <= allframes:
+    if currentframe < allframes:
         r = requests.post(
             "https://api.deepai.org/api/deepdream",
             files={
@@ -52,3 +54,18 @@ while True:
         currentframe += 1
     else:
         break
+
+cap = cv2.VideoCapture("video.mp4")
+
+fpsa = cap.get(cv2.CAP_PROP_FPS)
+print(fpsa)
+im = Image.open('./deep_image/0.jpg')
+
+print(im.size)
+print(type(im.size))
+w, h = im.size
+
+clip = ImageSequenceClip("./deep_image/", fps = fpsa)
+
+clip.write_videofile("deep_video.mp4", fps=clip.fps,
+                      audio_bitrate="1000k", bitrate="4000k")
