@@ -1,12 +1,12 @@
 TURN YOUR VIDEO INTO A DREAM
 
 
-This program takes your video, splits it into its frames, sends it to a AI to have special effects applied, and puts the video back together.
+This program takes your video, splits it into its frames, sends it to an AI to have special effects applied, and puts the video back together.
 
 
-DON'T FORGET TO INSTALL REQUIREMENTS
+Install required libraries with:
 
-pip3 install -r requirements.txt
+> pip3 install -r requirements.txt
 
 
 Usage:
