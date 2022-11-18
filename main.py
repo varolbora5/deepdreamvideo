@@ -2,8 +2,12 @@ import cv2
 import os
 import requests
 from PIL import Image
+import sys
+import shutil
+video_name = sys.argv[1]
+api = sys.argv[2]
 from moviepy.video.io.ImageSequenceClip import ImageSequenceClip
-cam = cv2.VideoCapture('./video.mp4')
+cam = cv2.VideoCapture(video_name)
 try:
     if not os.path.exists('image_data'):
         os.makedirs('image_data')
@@ -41,7 +45,7 @@ while True:
             files={
                 'image': open('./image_data/frame' + str(currentframe) + '.jpg', 'rb'),
             },
-            headers={'api-key': 'PUT API KEY FOR DEEPAI HERE'}
+            headers={'api-key': api }
         )
         response = r.json()
         print(response)
@@ -69,3 +73,6 @@ clip = ImageSequenceClip("./deep_image/", fps = fpsa)
 
 clip.write_videofile("deep_video.mp4", fps=clip.fps,
                       audio_bitrate="1000k", bitrate="4000k")
+
+shutil.rmtree('./image_data')
+shutil.rmtree('./deep_image')

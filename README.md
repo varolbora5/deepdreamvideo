@@ -11,13 +11,17 @@ Install required libraries with:
 
 Usage:
 
-1)Put your video in the same folder as main.py
+<ul><b><i>Put your video in the same folder as main.py </i></b></ul>
 
-2)Rename your video to video.mp4
+<ul><b><i><pre>python main.py  'name.mp4 '  'apikey' </pre></i></b></ul>
 
-3)Run the program and wait
+<ul><b><i>Run the program and wait </i></b></ul>
 
+using_docker:
 
-IMPORTANT
-
-Delete the folders named "image_data" and "deep_image" if you are going to use it again
+```bash
+docker build -t ai .
+```
+```bash
+docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp ai main.py test.mp4  apikey
+```
